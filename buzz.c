@@ -6,12 +6,6 @@
 #include "buzz.h"
 
 #include <avr/interrupt.h>
-#include <math.h>
-
-
-#if F_CPU != 16000000u && F_CPU != 8000000UL
-
-#endif
 
 static volatile uint16_t count = 0;
 
@@ -20,10 +14,10 @@ void buzz(uint16_t milliseconds) {
     TCCR2A = 0;
 #if F_CPU == 16000000u
     TCCR2B = 5;
-#elif F_CPU == 8000000u
-    TCCR2B = 4;
+#elif F_CPU == 1000000u
+    TCCR2B = 2;
 #else
-    #error CPU clock must be either 16 MHz or 8 MHz!
+    #error CPU clock must be either 16 MHz (external crystal) or 1 MHz (internal oscillator)!
 #endif
     TIMSK2 = 1;
 

@@ -6,9 +6,25 @@
 #include "7segment.h"
 
 // TODO: Find out ports
-static char chars [16] = {0x7, 0xaf, 0x25, 0x25, 0x8d, 0x45, 0x45, 0x2f, 0x5, 0x5, 0xd, 0xcd, 0xe5, 0xc5, 0x45, 0x4d};
+static uint8_t chars [16] = {
+        SEGMENT_A | SEGMENT_B | SEGMENT_C | SEGMENT_D | SEGMENT_E | SEGMENT_F,
+        SEGMENT_B | SEGMENT_C,
+        SEGMENT_A | SEGMENT_B | SEGMENT_G | SEGMENT_E | SEGMENT_D,
+        SEGMENT_A | SEGMENT_B | SEGMENT_G | SEGMENT_C | SEGMENT_D,
+        SEGMENT_F | SEGMENT_G | SEGMENT_B | SEGMENT_C,
+        SEGMENT_A | SEGMENT_F | SEGMENT_G | SEGMENT_C | SEGMENT_D,
+        SEGMENT_A | SEGMENT_B | SEGMENT_G | SEGMENT_E | SEGMENT_D | SEGMENT_C,
+        SEGMENT_A | SEGMENT_B | SEGMENT_C,
+        SEGMENT_A | SEGMENT_B | SEGMENT_C | SEGMENT_D | SEGMENT_E | SEGMENT_F | SEGMENT_G,
+        SEGMENT_A | SEGMENT_B | SEGMENT_C | SEGMENT_D | SEGMENT_F | SEGMENT_G,
+};
 
-void setDigit(volatile uint8_t *port, char value) {
+void setDigit(volatile uint8_t *port, int value) {
     if (value >= 16) return;
+#ifdef INVERT_SEGMENTS
+    *port = 0xff & (~chars[value]);
+#else
     *port = chars[value];
+#endif
+
 }
