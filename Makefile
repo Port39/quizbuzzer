@@ -16,10 +16,13 @@ F_CPU?=1000000
 #PROGRAMMER=arduino
 #BAUD=9600
 # If you use another Arduino as an ISP programmer:
-PROGRAMMER?=stk500v1
-BAUD?=19200
+#PROGRAMMER?=stk500v1
+#BAUD?=19200
+# If you use the "mySmartUSB light" (select the STK500 mode with the Windows application!)
+PROGRAMMER?=stk500
+BAUD?=115200
 
-PORT?=/dev/ttyACM0
+PORT?=/dev/ttyUSB0
 
 # Arguments shared by C and C++ compiles
 common = -Os -DBAUD=$(BAUD) -D__AVR_$(MCU)__ -DF_CPU=$(F_CPU) -mmcu=$(MCU) -Wall -Wextra -pedantic -Wno-unknown-pragmas -lc -lm
