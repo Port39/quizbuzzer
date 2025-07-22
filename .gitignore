@@ -23,3 +23,5 @@ _autosave*
 *.gm1
 *.drl
 *.gbrjob
+
+*.csv
