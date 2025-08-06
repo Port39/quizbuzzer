@@ -549,7 +549,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "./",
-      "plot": "./",
+      "plot": "./plots",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",
@@ -707,5 +707,11 @@
       "Root"
     ]
   ],
-  "text_variables": {}
+  "text_variables": {
+    "License": "CERN-OHL-W",
+    "Port39": "Port39 e.V.",
+    "Revision": "2",
+    "Source": "github.com/port39/quizbuzzer",
+    "Title": "Quiz Buzzer"
+  }
 }
